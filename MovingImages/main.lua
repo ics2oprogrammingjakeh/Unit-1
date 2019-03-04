@@ -57,7 +57,7 @@ octopus.y = display.contentHeight/3
 -- description: This function adds the scroll speed to the x-value of the ship
 local function MoveOctopus(event)
 	-- add the scroll speed to the x-value of the ship
-octopus.x = octopus.x + scrollspeed	
+octopus.x = octopus.x - scrollspeed	
 -- change the transperency of the octopus every time it moves so that it fades out
 octopus.alpha = octopus.alpha + 00.1
 end
