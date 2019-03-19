@@ -72,11 +72,15 @@ local function NumericFieldListener( event )
 	questionObject = display.newText("", display.contentWidth/3, display.contentHeight/2, nil, 50)
 	questionObject:setTextColor(255/25, 169/255, 50/255)
 	
+--creating the correcttext object and make it invisible
+correctObject = display.newText( "Correct!", display.contentWidth/2, display.contentHeight*2/3, nil, 50 )
+correctObject:setTextColor(15/255, 170/255, 150/255)
+correctObject.isVisible = false
 
-	--create the correct text object and make it invisible
-	correctObject = display.newText ( "Correct!", display.contentWidth/2, display.contentHeight*2/3, nil 50 )
-	numericField.inpuType = "number"
-
+	--create numeric field
+	numericField = native.newTextField( display.contentWidth/2, display.contentHeight*2/3, nil, 50)
+	numericField.inputType = "number"
+	
 	--add the event listener for the numeric field 
 	numericField:addEventListener( "userInput", NumericFieldListener )
 
