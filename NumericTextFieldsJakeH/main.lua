@@ -21,7 +21,8 @@ local randomNumber1
 local randomNumber2
 local userAnswer
 local correctAnswer
-
+local wrongAnswer 
+local wrongObject
 ------------------------------------------------------------------
 --local functions
 ------------------------------------------------------------------
@@ -40,7 +41,15 @@ end
 
 local function HideCorrect()
 	correctObject.isVisible = false
+	AskQuestion()
 end
+
+
+local function hideWrong()
+	wrongObject.isVisible = false
+	AskQuestion()
+end 
+
 
 local function NumericFieldListener( event )
 
@@ -56,13 +65,20 @@ local function NumericFieldListener( event )
 			userAnswer = tonumber(event.target.text)
 
 
-			-- if the busers answer and the correct answer are the same:
+			-- if the users answer and the correct answer are the same:
 			if (userAnswer == correctAnswer) then
 				correctObject.isVisible = true 
 				timer.performWithDelay(2000, HideCorrect)
+
+
+				elseif (userAnswer +- correctAnswer) then 
+					wrongObject.isVisible = true
+					timer.performWithDelay(2000, HideWrong)
+				end
 			end
 		end
-	end
+	
+
 
 	------------------------------------------------------------
 	--object creation
@@ -77,8 +93,16 @@ correctObject = display.newText( "Correct!", display.contentWidth/2, display.con
 correctObject:setTextColor(15/255, 170/255, 150/255)
 correctObject.isVisible = false
 
+
+
+wrongObject = display.newText( "Incorrect!", display.contentWidth/2, display.contentHeight*2/3, nil, 50 )
+wrongObject:setTextColor(15/255, 170/255, 150/255)
+wrongObject.isVisible = false
+
+
+
 	--create numeric field
-	numericField = native.newTextField( display.contentWidth/2, display.contentHeight*2/3, nil, 50)
+	numericField = native.newTextField( display.contentWidth/2, display.contentHeight/2, 150, 80)
 	numericField.inputType = "number"
 	
 	--add the event listener for the numeric field 
@@ -89,4 +113,11 @@ correctObject.isVisible = false
 	-----------------------------------------------------------
 	--call the function to ask the question
 	AskQuestion()
+
+
+
+
+
+
+
 
