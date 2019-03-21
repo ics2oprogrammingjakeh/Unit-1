@@ -23,6 +23,8 @@ local userAnswer
 local correctAnswer
 local wrongAnswer 
 local wrongObject
+local CorrectSounds = audio.loadSound( "Sounds/collectcoin.wav")
+local correctSoundChannel
 ------------------------------------------------------------------
 --local functions
 ------------------------------------------------------------------
@@ -45,7 +47,7 @@ local function HideCorrect()
 end
 
 
-local function hideWrong()
+local function HideWrong()
 	wrongObject.isVisible = false
 	AskQuestion()
 end 
@@ -118,6 +120,34 @@ wrongObject.isVisible = false
 
 
 
+local function NumericFieldListener(event )
+
+	if ( event.phase == "began" ) then 
+
+		event.target.text = ""
+
+	elseif event.phase == "submitted" then 
+
+			useAnswer = tonumber(event.target.text)
+
+		if (userAnswer == corretAnswer) then 
+				correctObject.isVisible = true 
+
+				correctSoundChannel = audio.play(correctSound)
+
+				timer.performWithDelay(200, HideCorrect)
+		end
+	end
+end
+			
+		
+	
+
+			
+		
+	
+			
+		
 
 
 
