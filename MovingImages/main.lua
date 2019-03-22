@@ -64,3 +64,9 @@ end
 
 -- Moveship will be called over and over again
 Runtime:addEventListener("enterFrame", MoveOctopus)
+
+
+local sound1 = audio.loadSound( "Sounds/collectcoin.wav")
+local correctSoundChannel
+
+
