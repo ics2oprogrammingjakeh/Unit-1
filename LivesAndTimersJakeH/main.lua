@@ -12,6 +12,7 @@ local countDownTimer
 local lives = 3
 local heart1 
 local heart2
+local heart3
 
 
 
@@ -59,6 +60,9 @@ heart1.x = display.contentWidth * 7 / 8
 heart1.y = display.contentHeight *  1 / 7 
 
 heart2 = newImageRect("Images/healthheart.png", 100, 100)
-heart2.x = display.contentWidth * 7 / 8
-heary2.y = display.contentHeight * 1 / 7
+heart2.x = display.contentWidth * 6 / 8
+heart2.y = display.contentHeight * 1 / 7
 
+heart3 = newImageRect("Images/healthheart.png", 100, 100)
+heart3.x = display.contentWidth * 5 / 8 
+heart3.y = display.contentHeight * 1 / 7
